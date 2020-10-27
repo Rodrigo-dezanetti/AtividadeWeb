@@ -1,0 +1,115 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "helvetica";
+
+}
+
+body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background: url(img.jpg);
+	background-size: cover;
+
+}
+
+.calendar{
+	position: relative;
+	width: 180px;
+	background: white;
+	text-align: center;
+	border-radius: 9px;
+	overflow: hidden;
+	-webkit-box-reflect: below 1px linear-gradient(transparent, transparent, bleck);
+}
+.calendar #day{
+	position: relative;
+	padding: 5px 10px;
+	background: white;
+	color: gray;
+	font-size: 20px;
+	font-weight: 700;
+	text-transform: capitalize;
+}
+
+.calendar #horaFinal{
+	position: relative;
+	margin-bottom:  10px;
+	padding: 5px 10px;
+	background: white;
+	color: black;
+	font-size: 30px;
+	font-weight: 700;
+	text-transform: capitalize;
+}
+.calendar #dayNum{
+	margin-top: 0px;
+	line-height: 1em;
+	font-weight: 700;
+	font-size: 50px;
+	color: black;
+	
+}
+.calendar #year{
+	line-height: 1em;
+	font-weight: 700;
+	font-size: 30px;
+	color: gray;
+}
+
+.calendar #month{
+	position: relative;
+	padding: 5px 10px;
+	background: red;
+	color: white;
+	font-size: 30px;
+	font-weight: 700px;
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link href = "ProvaWeb.css" type="text/css" rel="stylesheet">
+	<title>Calendar</title>
+</head>
+<body>
+	<div class="calendar">
+		<p id=month></p>
+		<p id=day ></p>
+		<p id=dayNum ></p>
+		<p id=year ></p>
+		<p id=horaFinal ></p>
+		
+	</div>
+	<script>
+		const lang = navigator.language;
+		let date = new Date();
+
+		function tempo(){
+			let date = new Date();
+			let hora = date.getHours();
+			let min = date.getMinutes();
+			let seg = date.getSeconds();
+
+			let horaFinal = hora + ":" + min + ":" + seg;
+			document.getElementById('horaFinal').innerHTML = horaFinal; 
+		}
+		let dayNum = date.getDate();
+		let day = date.toLocaleString(lang,{weekday: 'long'});
+		let month = date.toLocaleString(lang,{month: 'long'});
+		let year = date.getFullYear();
+		
+		setInterval(tempo,1000);
+
+		document.getElementById('month').innerHTML = month;
+		document.getElementById('day').innerHTML = day;
+		document.getElementById('dayNum').innerHTML = dayNum;
+		document.getElementById('year').innerHTML = year;
+
+
+	</script>
+</body>
+</html>
